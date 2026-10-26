@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fff2f5">
+  <title>Rayyan & Vindi — 9 Bulan ♡</title>
+  <style>
+    :root {
+      --rose: #c84f75;
+      --rose-dark: #8f3153;
+      --pink: #ffe1e9;
+      --cream: #fff8f4;
+      --ink: #4d2938;
+      --muted: #896876;
+      --white: #fff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 24px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: ui-rounded, "Segoe UI", system-ui, sans-serif;
+      line-height: 1.7;
+    }
+
+    button,
+    a {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+      border: 0;
+    }
+
+    /* Navigasi */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      padding: 10px;
+      background: rgba(255, 248, 244, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #f4d5df;
+    }
+
+    .nav a {
+      color: var(--rose-dark);
+      text-decoration: none;
+      font-size: 0.83rem;
+      padding: 6px 12px;
+      border-radius: 30px;
+      transition: background 0.2s;
+    }
+
+    .nav a:hover {
+      background: var(--pink);
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 90vh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 70px 20px 85px;
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(circle at 12% 20%, #ffe0e8, transparent 34%),
+                  radial-gradient(circle at 90% 75%, #f6d9cf, transparent 35%),
+                  var(--cream);
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "♡";
+      position: absolute;
+      font-family: Georgia, serif;
+      color: rgba(200, 79, 117, 0.09);
+      font-size: clamp(13rem, 35vw, 27rem);
+      line-height: 1;
+    }
+
+    .hero::before {
+      left: -5%;
+      top: -7%;
+    }
+
+    .hero::after {
+      right: -4%;
+      bottom: -12%;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.19em;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--rose-dark);
+    }
+
+    h1, h2, h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 500;
+      line-height: 1.15;
+    }
+
+    h1 {
+      font-size: clamp(3.2rem, 10vw, 7rem);
+      margin: 18px 0;
+      color: var(--ink);
+      letter-spacing: -0.045em;
+    }
+
+    h1 em {
+      color: var(--rose);
+      font-weight: 400;
+    }
+
+    h2 {
+      font-size: clamp(2.2rem, 6vw, 3.7rem);
+      margin: 10px 0 16px;
+    }
+
+    h3 {
+      font-size: 1.55rem;
+      margin: 10px 0;
+    }
+
+    p {
+      margin: 8px 0 18px;
+    }
+
+    .intro {
+      max-width: 570px;
+      margin: 0 auto 25px;
+      color: var(--muted);
+    }
+
+    /* Tombol Style */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 13px 21px;
+      background: var(--rose);
+      color: white;
+      box-shadow: 0 8px 20px rgba(200, 79, 117, 0.15);
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.04);
+    }
+
+    .btn.light {
+      background: white;
+      color: var(--rose-dark);
+      border: 1px solid #f0cad6;
+      box-shadow: none;
+    }
+
+    .btn.small {
+      padding: 9px 15px;
+      font-size: 0.9rem;
+    }
+
+    section {
+      padding: 75px 20px;
+    }
+
+    .inner {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .heading {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 36px;
+    }
+
+    .heading p {
+      color: var(--muted);
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #f1d9e0;
+      border-radius: 24px;
+      padding: 25px;
+      box-shadow: 0 10px 35px rgba(124, 51, 64, 0.04);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .feature-icon {
+      font-size: 2rem;
+    }
+
+    .counter {
+      background: linear-gradient(145deg, #c84f75, #8f3153);
+      color: white;
+      text-align: center;
+      display: grid;
+      place-items: center;
+      min-height: 240px;
+    }
+
+    .counter .big {
+      font: clamp(4rem, 11vw, 6rem) Georgia, serif;
+      line-height: 1;
+    }
+
+    .counter .eyebrow {
+      color: #ffe5ec;
+    }
+
+    .counter p {
+      max-width: 300px;
+    }
+
+    .soft {
+      background: #fff0f4;
+    }
+
+    /* Timer */
+    .timer-card {
+      max-width: 820px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .timer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin: 26px 0;
+    }
+
+    .time-box {
+      background: #fff0f4;
+      border: 1px solid #f6d5df;
+      border-radius: 18px;
+      padding: 18px 8px;
+    }
+
+    .time-box strong {
+      display: block;
+      font: clamp(1.8rem, 5vw, 3rem) Georgia, serif;
+      color: var(--rose-dark);
+    }
+
+    .time-box span {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    /* Galeri */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .photo {
+      position: relative;
+      min-height: 220px;
+      border-radius: 20px;
+      overflow: hidden;
+      background: linear-gradient(145deg, #f5bccc, #b54d70);
+      display: grid;
+      place-items: center;
+      color: white;
+      text-align: center;
+      padding: 16px;
+    }
+
+    .photo:nth-child(2n) {
+      background: linear-gradient(145deg, #eac2b6, #b75b77);
+    }
+
+    .photo img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hint {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.86rem;
+      margin-top: 14px;
+    }
+
+    /* Timeline */
+    .timeline {
+      max-width: 750px;
+      margin: auto;
+    }
+
+    .moment {
+      display: grid;
+      grid-template-columns: 25px 1fr;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--rose);
+      margin: 9px 0 0 5px;
+      box-shadow: 0 0 0 6px var(--pink);
+    }
+
+    .moment small {
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--rose-dark);
+    }
+
+    .moment .card {
+      padding: 22px;
+    }
+
+    .moment p {
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    /* Pemutar Musik Piringan Hitam */
+    .music {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .vinyl {
+      flex: 0 0 120px;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: repeating-radial-gradient(circle, #22151b 0 4px, #3b232e 5px 8px);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 8px 24px rgba(73, 43, 50, 0.3);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      animation: spin 6s linear infinite;
+      animation-play-state: paused;
+    }
+
+    .vinyl:hover {
+      transform: scale(1.05);
+    }
+
+    .vinyl.playing {
+      animation-play-state: running;
+    }
+
+    .vinyl-center {
+      background: #f2a9bd;
+      color: #6e2c46;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 1.3rem;
+      border: 3px solid #22151b;
+      user-select: none;
+    }
+
+    .music-info {
+      flex: 1;
+    }
+
+    .artist {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-top: -6px;
+    }
+
+    .music-message {
+      font-size: 0.9rem;
+      color: var(--ink);
+      margin: 10px 0 14px;
+    }
+
+    .music-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      background: var(--rose);
+      color: white;
+      border-radius: 30px;
+      font-size: 0.88rem;
+      transition: 0.2s;
+    }
+
+    .music-btn:hover {
+      background: var(--rose-dark);
+    }
+
+    .music-status {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    /* Surat */
+    .letter-section {
+      background: radial-gradient(ellipse at 50% 0%, #f8dce5, transparent 65%), #fff7f4;
+    }
+
+    .letter {
+      max-width: 760px;
+      margin: auto;
+      text-align: center;
+      padding: clamp(25px, 6vw, 55px);
+      background: #fffdfb;
+      border: 1px solid #f1d9e0;
+      border-radius: 28px;
+      box-shadow: 0 16px 45px rgba(158, 52, 79, 0.06);
+    }
+
+    .letter .envelope {
+      font-size: 3rem;
+    }
+
+    .letter-body {
+      display: none;
+      text-align: left;
+      white-space: pre-line;
+      margin-top: 25px;
+      line-height: 1.95;
+    }
+
+    .letter-body.open {
+      display: block;
+      animation: fade 0.5s;
+    }
+
+    .signature {
+      text-align: right;
+      font: italic 1.4rem Georgia, serif;
+      color: var(--rose-dark);
+      margin-top: 25px;
+    }
+
+    .final {
+      text-align: center;
+      padding: 90px 20px 70px;
+      background: radial-gradient(circle at 50% 20%, #ffe1e9, transparent 60%);
+    }
+
+    .final h2 {
+      font-size: clamp(2.5rem, 7vw, 4.8rem);
+    }
+
+    footer {
+      text-align: center;
+      padding: 22px;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    /* Animation Pop Heart */
+    .pop {
+      position: fixed;
+      z-index: 10;
+      pointer-events: none;
+      animation: float 1.8s forwards;
+    }
+
+    @keyframes spin {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes float {
+      to {
+        transform: translateY(-170px) rotate(20deg) scale(1.4);
+        opacity: 0;
+      }
+    }
+
+    @keyframes fade {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 680px) {
+      section {
+        padding: 58px 16px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .photo {
+        min-height: 185px;
+      }
+
+      .timer-grid {
+        gap: 7px;
+      }
+
+      .time-box {
+        padding: 14px 4px;
+      }
+
+      .music {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .nav {
+        gap: 2px;
+      }
+
+      .nav a {
+        padding: 6px 8px;
+        font-size: 0.76rem;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigasi -->
+  <nav class="nav" aria-label="Navigasi halaman">
+    <a href="#cerita">Cerita kita</a>
+    <a href="#waktu">Waktu bersama</a>
+    <a href="#kenangan">Galeri</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#musik">Musik</a>
+    <a href="#surat">Surat</a>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-content">
+      <div class="eyebrow">a tiny website made with love ♡</div>
+      <h1>Rayyan <em>&amp;</em><br>Vindi</h1>
+      <p class="intro">
+        Happy 9 Months Anniversary, Sayang! Dari tempat PKL, jadi dua orang yang ternyata satu frekuensi.
+        Siapa sangka cerita kecil ini bisa jadi seberarti ini? ♡
+      </p>
+      <button class="btn" onclick="document.querySelector('#cerita').scrollIntoView({behavior:'smooth'}); hearts(12);">
+        Buka hadiah kecil ini ♡
+      </button>
+      <p style="font-size:0.88rem; color:var(--muted); margin-top:18px;">23 Januari 2026 · cerita kita dimulai</p>
+    </div>
+  </header>
+
+  <!-- Section Cerita -->
+  <section id="cerita">
+    <div class="inner">
+      <div class="heading">
+        <div class="eyebrow">our little universe</div>
+        <h2>Hai, Bebe! 💗</h2>
+        <p>Website kecil ini aku bikin khusus buat kamu. Bukan hadiah paling mewah, tapi semoga bisa jadi tempat kecil untuk menyimpan cerita kita.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <div class="feature-icon">💻💕</div>
+          <h3>Berawal dari tempat PKL</h3>
+          <p>Aku lebih dulu masuk ke software house tempat PKL kita. Tiga bulan kemudian, kamu datang. Kita sama-sama anak RPL, mulai dekat, ternyata cocok dan satu frekuensi. Plot twist PKL: malah cinlok, wkwkwk.</p>
+        </article>
+        <article class="card">
+          <div class="feature-icon">🥹🌷</div>
+          <h3>Hal kecil yang aku suka</h3>
+          <p>Aku suka cara kamu bermanja ke aku. Kamu memang kadang gengsian, tapi justru momen saat kamu manja itu yang bikin aku gemas dan merasa spesial. Jangan gengsi terus ya, Sayang. Hehe ♡</p>
+        </article>
+        <div class="card counter">
+          <div class="big">09</div>
+          <div class="eyebrow">bulan bersama</div>
+          <p>Sembilan bulan cerita, tawa, belajar memahami, dan kenangan yang pengin aku simpan baik-baik.</p>
+          <button class="btn light small" onclick="hearts(24)">Kirim banyak hati ♡</button>
+        </div>
+        <article class="card">
+          <div class="feature-icon">🫶🏻</div>
+          <h3>Untuk kamu, Bebe</h3>
+          <p>Terima kasih sudah hadir di cerita hidupku. Semoga kita tetap punya ruang untuk tertawa, cerita apa saja, saling mendengarkan, dan menghargai hal-hal kecil dari satu sama lain.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Timer -->
+  <section class="soft" id="waktu">
+    <div class="inner">
+      <div class="heading">
+        <div class="eyebrow">every second counts</div>
+        <h2>Waktu yang sudah kita punya ⏳</h2>
+        <p>Sejak 23 Januari 2026, ada waktu yang terus bertambah dan cerita yang masih bisa kita tulis.</p>
+      </div>
+      <div class="card timer-card">
+        <div class="eyebrow">rayyan ♡ vindi</div>
+        <div class="timer-grid">
+          <div class="time-box"><strong id="days">000</strong><span>hari</span></div>
+          <div class="time-box"><strong id="hours">00</strong><span>jam</span></div>
+          <div class="time-box"><strong id="minutes">00</strong><span>menit</span></div>
+          <div class="time-box"><strong id="seconds">00</strong><span>detik</span></div>
+        </div>
+        <p style="color:var(--muted)">dan hitungannya terus berjalan… semoga dipenuhi hal-hal baik, ya, Sayang. ♡</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Galeri -->
+  <section id="kenangan">
+    <div class="inner">
+      <div class="heading">
+        <div class="eyebrow">little moments, big feelings</div>
+        <h2>Galeri kenangan kita 📸</h2>
+        <p>Momen indah yang diabadikan bersama.</p>
+      </div>
+
+      <div class="gallery">
+        <div class="photo"><img src="image/foto1.jpeg" alt="Foto pertama"></div>
+        <div class="photo"><img src="image/foto2.jpeg" alt="Foto kedua"></div>
+        <div class="photo"><img src="image/foto3.jpeg" alt="Foto ketiga"></div>
+        <div class="photo"><img src="image/foto4.jpeg" alt="Foto keempat"></div>
+        <div class="photo"><img src="image/foto5.jpeg" alt="Foto kelima"></div>
+        <div class="photo"><img src="image/foto6.jpeg" alt="Foto keenam"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Timeline -->
+  <section class="soft" id="timeline">
+    <div class="inner">
+      <div class="heading">
+        <div class="eyebrow">chapter by chapter</div>
+        <h2>Cerita kecil Rayyan &amp; Vindi</h2>
+        <p>Beberapa bab yang membuat perjalanan kita terasa istimewa.</p>
+      </div>
+      <div class="timeline">
+        <div class="moment">
+          <div class="dot"></div>
+          <article class="card">
+            <small>bab 01 · pertemuan</small>
+            <h3>Software house, tempat cerita dimulai 💻</h3>
+            <p>Aku sudah lebih dulu PKL, lalu tiga bulan setelahnya kamu datang. Dari sering bertemu, ngobrol, sampai sadar ternyata kita nyambung dan satu frekuensi.</p>
+          </article>
+        </div>
+        <div class="moment">
+          <div class="dot"></div>
+          <article class="card">
+            <small>bab 02 · 23 januari 2026</small>
+            <h3>Hari kita resmi jadi kita 💞</h3>
+            <p>Tanggal yang sekarang punya tempat sendiri di kalender dan hati. Awal dari cerita yang kita jalani bersama.</p>
+          </article>
+        </div>
+        <div class="moment">
+          <div class="dot"></div>
+          <article class="card">
+            <small>bab 03 · first date</small>
+            <h3>Bioskop, bunga, dan mi ayam 🍿🌷</h3>
+            <p>Kamu jadi wanita pertama yang aku kasih bunga, dan kamu juga jadi orang pertama yang mengajakku punya pengalaman nonton bioskop berdua. Setelah itu kita makan mi ayam sambil bertukar cerita tentang masa lalu.</p>
+          </article>
+        </div>
+        <div class="moment">
+          <div class="dot"></div>
+          <article class="card">
+            <small>bab 04 · solo malam itu</small>
+            <h3>Keliling kota sampai nyasar wkwkwk 🌃</h3>
+            <p>Setelah makan, kita muter-muter Kota Solo sampai malah nyasar ke Bengawan Solo. Agak malu kalau diingat, tapi justru itu yang bikin kenangan ini terasa lucu dan berkesan.</p>
+          </article>
+        </div>
+        <div class="moment">
+          <div class="dot"></div>
+          <article class="card">
+            <small>bab 05 · hari ini</small>
+            <h3>Sembilan bulan dan masih banyak cerita ♡</h3>
+            <p>Terima kasih untuk semua momen yang sudah kita lewati. Semoga kita terus belajar memahami satu sama lain dan membuat kenangan baru.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Musik -->
+  <section id="musik">
+    <div class="inner">
+      <div class="heading">
+        <div class="eyebrow">our little soundtrack</div>
+        <h2>Satu lagu untuk kita 🎧</h2>
+        <p>Klik piringan hitam atau tombol untuk memutar lagu ♡</p>
+      </div>
+
+      <div class="card music">
+        <div class="vinyl" id="vinyl" title="Klik untuk memutar/menghentikan lagu">
+          <div class="vinyl-center">♡</div>
+        </div>
+
+        <div class="music-info">
+          <div class="eyebrow">a song for you ♡</div>
+          <h3>Who Knows</h3>
+          <p class="artist">Daniel Caesar</p>
+
+          <p class="music-message">
+            Ada lagu yang selalu mengingatkan aku pada seseorang. Dan lagu ini mengingatkan aku pada kamu.
+          </p>
+
+          <div class="music-controls">
+            <button type="button" id="musicToggle" class="music-btn" aria-label="Putar musik">
+              <span id="musicIcon">▶</span>
+              <span id="musicLabel">Putar lagu kita</span>
+            </button>
+          </div>
+
+          <p id="musicStatus" class="music-status" aria-live="polite">
+            ♡ Klik di mana saja untuk mulai mendengarkan...
+          </p>
+
+          <audio id="ourMusic" preload="auto">
+            <source src="audio/who-knows.mp3" type="audio/mpeg">
+            Browser kamu tidak mendukung audio.
+          </audio>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Surat -->
+  <section class="letter-section" id="surat">
+    <div class="inner">
+      <div class="letter">
+        <div class="envelope">💌</div>
+        <div class="eyebrow">a letter from my heart</div>
+        <h2>Surat kecil untuk Bebe</h2>
+        <p>Ada sesuatu yang pengin aku sampaikan, dari hati aku sendiri.</p>
+        <button class="btn" id="openLetter">Buka suratnya ♡</button>
+        <div class="letter-body" id="letterBody">
+          Untuk Sayangku, Vindi ♡
+
+          Happy 9 months anniversary, Bebe!
+
+          Nggak nyangka ya, cerita kita berawal dari tempat PKL. Awalnya cuma dua anak RPL di software house yang ternyata cocok dan satu frekuensi. Sekarang, kita sudah punya banyak cerita yang bisa dikenang.
+
+          Aku masih ingat first date kita: pertama kalinya aku ke bioskop bareng pacar, pertama kalinya aku kasih bunga ke seorang wanita, lalu makan mi ayam sambil saling cerita tentang masa lalu. Habis itu malah keliling Solo sampai nyasar ke Bengawan Solo, wkwkwk. Kalau diingat memang agak malu, tapi justru itu yang bikin aku senyum sendiri.
+
+          Salah satu hal yang paling aku suka dari kamu adalah cara kamu bermanja ke aku. Walaupun kadang gengsi, aku senang saat kamu menunjukkan sisi manjamu. Rasanya gemas, dan itu jadi salah satu hal kecil tentang kamu yang aku sayang.
+
+          Terima kasih sudah menjadi bagian dari sembilan bulan ini. Aku berharap kita bisa terus saling mengenal, belajar memahami, dan menghargai satu sama lain. Semoga masih banyak tempat yang kita datangi, makanan yang kita coba, cerita random yang kita bahas, dan momen sederhana yang nanti jadi kenangan berharga.
+
+          Happy anniversary, Sayang. Semoga kamu selalu merasa disayang dan dihargai. Aku sayang kamu, Bebe. ♡
+
+          <div class="signature">dari Rayyan, untuk Vindi ♡</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Final -->
+  <section class="final">
+    <div class="eyebrow">one last little surprise</div>
+    <h2>Hei, Bebe…<br><em style="color:var(--rose)">kamu spesial.</em> ♡</h2>
+    <p>Terima kasih sudah ikut menulis cerita ini bersamaku.</p>
+    <button class="btn" id="surprise">Tekan untuk kejutan terakhir ✨</button>
+    <p id="surpriseText" style="font-weight:700; color:var(--rose-dark); min-height:28px; margin-top:18px;"></p>
+  </section>
+
+  <footer>dibuat sepenuh hati oleh Rayyan · untuk Vindi · 23.01.2026 ♡</footer>
+
+  <!-- Script Javascript -->
+  <script>
+    // Timer Hitung Bersama
+    const startDate = new Date(2026, 0, 23, 0, 0, 0);
+    function updateTimer() {
+      const diff = Math.max(0, Date.now() - startDate.getTime());
+      document.getElementById('days').textContent = String(Math.floor(diff / 86400000)).padStart(3, '0');
+      document.getElementById('hours').textContent = String(Math.floor((diff / 3600000) % 24)).padStart(2, '0');
+      document.getElementById('minutes').textContent = String(Math.floor((diff / 60000) % 60)).padStart(2, '0');
+      document.getElementById('seconds').textContent = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
+    }
+    updateTimer();
+    setInterval(updateTimer, 1000);
+
+    // Buka / Tutup Surat
+    document.getElementById('openLetter').addEventListener('click', function () {
+      const body = document.getElementById('letterBody');
+      body.classList.toggle('open');
+      this.textContent = body.classList.contains('open') ? 'Tutup suratnya ♡' : 'Buka suratnya ♡';
+      if (body.classList.contains('open')) hearts(10);
+    });
+
+    // Kejutan Terakhir
+    document.getElementById('surprise').addEventListener('click', function () {
+      hearts(35);
+      document.getElementById('surpriseText').textContent = 'Kalau bisa mengulang first date kita, aku tetap akan memilih kamu. Sayang kamu, Bebe! ♡';
+      this.textContent = 'Kejutan terkirim ke hatimu 💗';
+    });
+
+    // Efek Animasi Hati
+    function hearts(n) {
+      const symbols = ['♡', '♥', '💗', '✧', '💕', '🌸'];
+      for (let i = 0; i < n; i++) {
+        const e = document.createElement('span');
+        e.className = 'pop';
+        e.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+        e.style.left = (5 + Math.random() * 90) + 'vw';
+        e.style.top = (45 + Math.random() * 45) + 'vh';
+        e.style.fontSize = (16 + Math.random() * 22) + 'px';
+        e.style.color = ['#c84f75', '#d66b86', '#b65a78'][Math.floor(Math.random() * 3)];
+        document.body.appendChild(e);
+        setTimeout(() => e.remove(), 1900);
+      }
+    }
+
+    // Pemutar Musik Piringan Hitam & Fitur Autoplay Interaktif
+    const audio = document.getElementById('ourMusic');
+    const vinyl = document.getElementById('vinyl');
+    const musicBtn = document.getElementById('musicToggle');
+    const musicIcon = document.getElementById('musicIcon');
+    const musicLabel = document.getElementById('musicLabel');
+    const musicStatus = document.getElementById('musicStatus');
+
+    function playMusic() {
+      audio.play().then(() => {
+        vinyl.classList.add('playing');
+        musicIcon.textContent = '❚❚';
+        musicLabel.textContent = 'Jeda lagu';
+        musicStatus.textContent = '🎵 Sedang memutar: Daniel Caesar - Who Knows ♡';
+      }).catch(err => {
+        console.log("Audio play prevented:", err);
+      });
+    }
+
+    function toggleMusic() {
+      if (audio.paused) {
+        playMusic();
+        hearts(6);
+      } else {
+        audio.pause();
+        vinyl.classList.remove('playing');
+        musicIcon.textContent = '▶';
+        musicLabel.textContent = 'Putar lagu kita';
+        musicStatus.textContent = '⏸️ Lagu dihentikan sementara.';
+      }
+    }
+
+    // Event Klik untuk Piringan Hitam dan Tombol Musik
+    vinyl.addEventListener('click', toggleMusic);
+    musicBtn.addEventListener('click', toggleMusic);
+
+    // Otomatis menyalakan musik saat pengunjung melakukan interaksi klik PERTAMA kali di halaman web
+    document.addEventListener('click', function triggerAutoPlay() {
+      if (audio.paused) {
+        playMusic();
+      }
+      // Hapus event listener setelah klik pertama berhasil agar tidak terpicu terus menerus
+      document.removeEventListener('click', triggerAutoPlay);
+    }, { once: true });
+
+    // Reset status saat lagu selesai
+    audio.addEventListener('ended', () => {
+      vinyl.classList.remove('playing');
+      musicIcon.textContent = '▶';
+      musicLabel.textContent = 'Putar lagu kita';
+      musicStatus.textContent = '♡ Lagu selesai diputar.';
+    });
+  </script>
+</body>
+
+</html>
